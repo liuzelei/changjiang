@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Accessory:</strong>
+  <%= @order_accessory.accessory_id %>
+</p>
+
+<p>
+  <strong>Count:</strong>
+  <%= @order_accessory.count %>
+</p>
+
+<%= link_to 'Edit', edit_order_accessory_path(@order_accessory) %> |
+<%= link_to 'Back', order_accessories_path %>

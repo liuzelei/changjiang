@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_id: 1
+  amount: 1
+  paid_at: 2014-07-31 23:25:34
+  type: 
+  card_no: MyString
+  bank: MyString
+  'no': MyString
+
+two:
+  order_id: 1
+  amount: 1
+  paid_at: 2014-07-31 23:25:34
+  type: 
+  card_no: MyString
+  bank: MyString
+  'no': MyString

@@ -1,0 +1,27 @@
+<h1>Listing order_accessories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Accessory</th>
+      <th>Count</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @order_accessories.each do |order_accessory| %>
+      <tr>
+        <td><%= order_accessory.accessory_id %></td>
+        <td><%= order_accessory.count %></td>
+        <td><%= link_to 'Show', order_accessory %></td>
+        <td><%= link_to 'Edit', edit_order_accessory_path(order_accessory) %></td>
+        <td><%= link_to 'Destroy', order_accessory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Order accessory', new_order_accessory_path %>
