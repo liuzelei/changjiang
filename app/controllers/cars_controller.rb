@@ -3,7 +3,7 @@ class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
 
   def index
-    @cars = @cars.page(params[:page])
+    @cars = @cars.order("id desc").page(params[:page])
   end
 
   def show
@@ -19,7 +19,7 @@ class CarsController < ApplicationController
     @car = Car.new(car_params)
 
     if @car.save
-      redirect_to @car, notice: 'Car was successfully created.'
+      redirect_to cars_path, notice: '车辆添加成功.'
     else
       render :new
     end
