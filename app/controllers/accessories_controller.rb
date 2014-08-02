@@ -1,14 +1,11 @@
 class AccessoriesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_accessory, only: [:show, :edit, :update, :destroy]
 
-  # GET /accessories
-  # GET /accessories.json
   def index
-    @accessories = Accessory.all
+    @accessories = @accessories.page(params[:page])
   end
 
-  # GET /accessories/1
-  # GET /accessories/1.json
   def show
   end
 
