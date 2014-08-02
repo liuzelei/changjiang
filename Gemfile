@@ -4,9 +4,13 @@ source 'http://ruby.taobao.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 # Use mysql as the database for Active Record
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.15'
 
 gem 'devise', '~> 3.2.4'
+
+gem 'cancan', '~> 1.6.10'
+
+gem 'kaminari'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
