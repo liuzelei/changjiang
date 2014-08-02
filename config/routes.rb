@@ -9,9 +9,8 @@ Rails.application.routes.draw do
 
   resources :cars
 
-  resources :users
-
   devise_for :users
+  resources :users
 
   root 'orders#index'
   # The priority is based upon order of creation: first created -> highest priority.
