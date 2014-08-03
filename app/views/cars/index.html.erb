@@ -24,7 +24,9 @@
                   <td><%= f.cc %></td>
                   <td><%= f.color %></td>
                   <td><%= f.price %></td>
-                  <td></td>
+                  <td>
+                    <%= link_to "详情", car_path(f) %>
+                  </td>
                 </tr>
               <% end %>
             </tbody>
