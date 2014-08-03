@@ -4,4 +4,7 @@ class Car < ActiveRecord::Base
   validates :price, presence: true
   validates :cc, presence: true
   validates :model, presence: true
+
+  has_many :car_images
+  has_many :images, through: :car_images
 end

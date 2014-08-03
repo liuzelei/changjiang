@@ -11,11 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731152534) do
+ActiveRecord::Schema.define(version: 20140803084104) do
 
   create_table "accessories", force: true do |t|
     t.string   "name"
     t.integer  "count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "car_images", force: true do |t|
+    t.integer  "car_id"
+    t.integer  "image_id"
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -28,6 +36,15 @@ ActiveRecord::Schema.define(version: 20140731152534) do
     t.string   "cc"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "images", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   create_table "order_accessories", force: true do |t|
