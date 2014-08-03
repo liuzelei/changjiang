@@ -1,27 +1,33 @@
-<h1>Listing accessories</h1>
+<% content_for :page_title do %>
+<%= render "title" %>
+<% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Count</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @accessories.each do |accessory| %>
-      <tr>
-        <td><%= accessory.name %></td>
-        <td><%= accessory.count %></td>
-        <td><%= link_to 'Show', accessory %></td>
-        <td><%= link_to 'Edit', edit_accessory_path(accessory) %></td>
-        <td><%= link_to 'Destroy', accessory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Accessory', new_accessory_path %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet box">
+      <div class="dataTables_wrapper form-inline" role="grid">
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover" id="trailer_table">
+            <thead>
+              <tr>
+                <th>名称</th>
+                <th>数量</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @accessories.each do |f| %>
+                <tr>
+                  <td><%= f.name %></td>
+                  <td><%= f.count %></td>
+                  <td></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <%= paginate @accessories %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
