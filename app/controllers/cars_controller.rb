@@ -1,6 +1,5 @@
 class CarsController < ApplicationController
   load_and_authorize_resource
-  before_action :set_car, only: [:show, :edit, :update, :destroy]
 
   def index
     @cars = @cars.order("id desc").page(params[:page])
@@ -39,13 +38,7 @@ class CarsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_car
-      @car = Car.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def car_params
-      params.require(:car).permit(:price, :vin, :color, :model, :cc)
-    end
+  def car_params
+    params.require(:car).permit(:price, :vin, :color, :model, :cc)
+  end
 end
