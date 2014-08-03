@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140803084104) do
+ActiveRecord::Schema.define(version: 20140803144613) do
 
   create_table "accessories", force: true do |t|
     t.string   "name"
     t.integer  "count"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "price"
   end
 
   create_table "car_images", force: true do |t|
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 20140803084104) do
     t.integer  "count"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "order_id"
   end
 
   create_table "orders", force: true do |t|
@@ -61,6 +63,7 @@ ActiveRecord::Schema.define(version: 20140803084104) do
     t.string   "no"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status"
   end
 
   create_table "payments", force: true do |t|

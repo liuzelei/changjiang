@@ -13,6 +13,8 @@
                 <th>序号</th>
                 <th>客户</th>
                 <th>价格</th>
+                <th>创建时间</th>
+                <th>状态</th>
                 <th></th>
               </tr>
             </thead>
@@ -22,7 +24,9 @@
                   <td><%= f.no %></td>
                   <td><%= f.customer_name %></td>
                   <td><%= f.price %></td>
-                  <td></td>
+                  <td><%= f.created_at.strftime('%m-%d %H:%M:%S') %></td>
+                  <td><%= f.status %></td>
+                  <td><%= link_to "详情", edit_order_path(f) %></td>
                 </tr>
               <% end %>
             </tbody>

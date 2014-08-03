@@ -11,7 +11,7 @@ gem 'devise', '~> 3.2.4'
 gem 'cancan', '~> 1.6.10'
 
 gem 'paperclip', '~> 4.2.0'
-
+gem 'model_concerns', github: 'liuzelei/model_concerns', tag: 'v0.0.2'
 gem 'kaminari'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
