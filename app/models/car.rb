@@ -7,4 +7,6 @@ class Car < ActiveRecord::Base
 
   has_many :car_images
   has_many :images, through: :car_images
+
+  accepts_nested_attributes_for :images, allow_destroy: true
 end

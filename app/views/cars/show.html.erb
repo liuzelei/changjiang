@@ -11,18 +11,28 @@
           <%= f.error_messages %>
           <h4 class="form-section">基本信息</h4>
           <div class="form-group">
-            <%= render "shared/column", name: "型号", content: f.c_text_field(:model) %>
-            <%= render "shared/column", name: "排量", content: f.c_text_field(:cc) %>
-            <%= render "shared/column", name: "颜色", content: f.c_text_field(:color) %>
+            <%= render "shared/column", name: "型号", content: f.c_text_field(:model, disabled: 'disabled') %>
+            <%= render "shared/column", name: "排量", content: f.c_text_field(:cc, disabled: 'disabled') %>
+            <%= render "shared/column", name: "颜色", content: f.c_text_field(:color, disabled: 'disabled') %>
           </div>
 
           <div class="form-group">
-            <%= render "shared/column", name: "车架号", content: f.c_text_field(:vin) %>
-            <%= render "shared/column", name: "价格", content: f.c_text_field(:price) %>
+            <%= render "shared/column", name: "车架号", content: f.c_text_field(:vin, disabled: 'disabled') %>
+            <%= render "shared/column", name: "价格", content: f.c_text_field(:price, disabled: 'disabled') %>
+          </div>
+
+          <h4 class="form-section">照片</h4>
+          <div class="form-group">
+            <label class="control-label col-md-1">车辆照片</label>
+            <div class="col-md-11">
+            <% @car.images.each do |image| %>
+              <%= image_tag image.file.url(:thumb) %>
+            <% end %>
+            </div>
           </div>
         </div>
-        <div class="form-actions right">
-          <button type="submit" class="btn">编辑</button>
+        <div class="form-actions right unsticky">
+          <%= link_to "修改", edit_car_path(@car), class: "btn default" %>
         </div>
         <% end %>
         </div>

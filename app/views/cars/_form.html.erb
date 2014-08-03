@@ -20,6 +20,27 @@
             <%= render "shared/column", name: "车架号", content: f.c_text_field(:vin) %>
             <%= render "shared/column", name: "价格", content: f.c_text_field(:price) %>
           </div>
+
+          <h4 class="form-section">照片</h4>
+
+          <div class="table-responsive">
+           <table class="table table-hover table-bordered">
+             <thead>
+               <tr>
+                 <th>照片</th>
+                 <th></th>
+               </tr>
+             </thead>
+             <tbody>
+               <%= f.fields_for :images do |r| %>
+                 <%= render "image_fields", :f => r %>
+               <% end %>
+               <tr>
+                 <td colspan="2"><%= link_to_add_fields "添加", f, :images %></td>
+               </tr>
+             </tbody>
+           </table>
+          </div>
         </div>
         <div class="form-actions right">
           <button type="submit" class="btn">编辑</button>
