@@ -1,33 +1,58 @@
-<%= form_for(@order) do |f| %>
-  <% if @order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
-
-      <ul>
-      <% @order.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :car_id %><br>
-    <%= f.number_field :car_id %>
-  </div>
-  <div class="field">
-    <%= f.label :customer_name %><br>
-    <%= f.text_field :customer_name %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.number_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :no %><br>
-    <%= f.text_field :no %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<% content_for :page_title do %>
+<%= render "title" %>
 <% end %>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet box">
+      <div class="portlet-body form">
+        <%= form_for(@order, html: { class: "form-horizontal" }) do |f| %>
+        <div class="form-body">
+          <%= f.error_messages %>
+          <h4 class="form-section">基本信息</h4>
+          <div class="form-group">
+            <%= render "shared/column", name: "编号", content: f.c_text_field(:no, disabled: "disabled") %>
+            <%= render "shared/column", name: "客户姓名", content: f.c_text_field(:customer_name, disabled: "disabled") %>
+            <%= render "shared/column", name: "总价", content: f.c_text_field(:price) %>
+          </div>
+
+          <h4 class="form-section">车辆信息</h4>
+          <div class="form-group">
+            <%= render "shared/column", name: "型号", content: text_field_tag(:car_model, @order.car.model, class: "form-control", disabled: "disabled") %>
+            <%= render "shared/column", name: "排量", content: text_field_tag(:car_cc, @order.car.cc, class: "form-control", disabled: "disabled") %>
+            <%= render "shared/column", name: "颜色", content: text_field_tag(:car_color, @order.car.color, class: "form-control", disabled: "disabled") %>
+          </div>
+
+          <div class="form-group">
+            <%= render "shared/column", name: "车架号", content: text_field_tag(:car_vin, @order.car.vin, class: "form-control", disabled: "disabled") %>
+            <%= render "shared/column", name: "价格", content: text_field_tag(:car_price, @order.car.price, class: "form-control", disabled: "disabled") %>
+          </div>
+
+          <h4 class="form-section">配件</h4>
+          <div class="table-responsive">
+           <table class="table table-hover table-bordered">
+             <thead>
+               <tr>
+                 <th>配件</th>
+                 <th>价格</th>
+               </tr>
+             </thead>
+             <tbody>
+              <% @order.accessories.each do |item| %>
+              <tr>
+                <td><%= item.name %></td>
+                <td><%= item.price %></td>
+              </tr>
+              <% end %>
+             </tbody>
+           </table>
+          </div>
+        </div>
+        <div class="form-actions right">
+          <button type="submit" class="btn">审批</button>
+        </div>
+        <% end %>
+        </div>
+    </div>
+  </div>
+</div>

@@ -4,6 +4,7 @@ class Order < ActiveRecord::Base
   sequence :SO
   belongs_to :car
   has_many :order_accessories
+  has_many :accessories, through: :order_accessories
 
   validates :status, presence: true
   validates :price, presence: true
