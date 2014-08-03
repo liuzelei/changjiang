@@ -1,0 +1,11 @@
+zh_CN:
+  activerecord:
+    models:
+      car: '车辆库存'
+    attributes:
+      car:
+        model: '型号'
+        vin: '车架号'
+        cc: '排量'
+        price: '价格'
+        color: '颜色'
