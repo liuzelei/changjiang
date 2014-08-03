@@ -47,6 +47,36 @@
              </tbody>
            </table>
           </div>
+
+          <h4 class="form-section">付款</h4>
+          <div class="table-responsive">
+            <table class="table table-hover table-bordered">
+            <thead>
+              <tr>
+                <th>编号</th>
+                <th>时间</th>
+                <th>金额</th>
+                <th>类型</th>
+                <th>支付方式</th>
+                <th>银行</th>
+                <th>卡号</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @order.payments.each do |item| %>
+            <tr>
+              <td><%= item.no %></td>
+              <td><%= item.paid_at.strftime('%m-%d %H:%M:%S') %></td>
+              <td><%= item.amount %></td>
+              <td><%= item.payment_for %></td>
+              <td><%= item.payment_method %></td>
+              <td><%= item.bank %></td>
+              <td><%= item.card_no %></td>
+            </tr>
+            <% end %>
+            </tbody>
+            </table>
+          </div>
         </div>
         <div class="form-actions right">
           <button type="submit" class="btn">审批</button>

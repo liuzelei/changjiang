@@ -27,14 +27,23 @@ Order.delete_all
 order1 = Order.create(car: car1, customer_name: "张三", price: "128000", status: "待审批")
 order1.order_accessories << OrderAccessory.create(accessory: acc1)
 order1.order_accessories << OrderAccessory.create(accessory: acc2)
+
+order1.payments << Payment.create(amount: "128000", paid_at: Time.now, payment_for: "全款", payment_method: "现金")
 order1.save
 
 order2 = Order.create(car: car2, customer_name: "李斯", price: "148000", status: "等待付款")
 order2.order_accessories << OrderAccessory.create(accessory: acc3)
 order2.order_accessories << OrderAccessory.create(accessory: acc4)
 order2.order_accessories << OrderAccessory.create(accessory: acc5)
+
+order2.payments << Payment.create(amount: "48000", paid_at: Time.now, payment_for: "定金", payment_method: "现金")
+order2.payments << Payment.create(amount: "100000", paid_at: Time.now, payment_for: "尾款", bank: "中国银行", card_no: "1234567890", payment_method: "支票")
 order2.save
 
-order2 = Order.create(car: car3, customer_name: "王武", price: "148000", status: "待审批")
-order2.order_accessories << OrderAccessory.create(accessory: acc6)
-order2.save
+order3 = Order.create(car: car3, customer_name: "王武", price: "148000", status: "待审批")
+order3.order_accessories << OrderAccessory.create(accessory: acc6)
+order3.payments << Payment.create(amount: "10000", paid_at: Time.now, payment_for: "定金", bank: "建设银行", card_no: "1234567890", payment_method: "银行卡")
+order3.payments << Payment.create(amount: "38000", paid_at: Time.now, payment_for: "首付", bank: "建设银行", card_no: "1234567890", payment_method: "转账")
+order3.payments << Payment.create(amount: "30000", paid_at: Time.now, payment_for: "月供", bank: "建设银行", card_no: "1234567890", payment_method: "支票")
+order3.payments << Payment.create(amount: "78000", paid_at: Time.now, payment_for: "尾款", bank: "建设银行", card_no: "1234567890", payment_method: "承兑汇票")
+order3.save

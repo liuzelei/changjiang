@@ -1,28 +1,19 @@
 class PaymentsController < ApplicationController
-  before_action :set_payment, only: [:show, :edit, :update, :destroy]
-
-  # GET /payments
-  # GET /payments.json
+  load_and_authorize_resource
+  
   def index
-    @payments = Payment.all
+    @payments = @payments.order("id desc").page(params[:page])
   end
 
-  # GET /payments/1
-  # GET /payments/1.json
   def show
   end
 
-  # GET /payments/new
   def new
-    @payment = Payment.new
   end
 
-  # GET /payments/1/edit
   def edit
   end
 
-  # POST /payments
-  # POST /payments.json
   def create
     @payment = Payment.new(payment_params)
 
@@ -62,13 +53,7 @@ class PaymentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_payment
-      @payment = Payment.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def payment_params
-      params.require(:payment).permit(:order_id, :amount, :paid_at, :type, :card_no, :bank, :no)
-    end
+  def payment_params
+    params.require(:payment).permit(:order_id, :amount, :paid_at, :type, :card_no, :bank, :no)
+  end
 end

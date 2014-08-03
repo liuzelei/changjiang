@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140803144613) do
+ActiveRecord::Schema.define(version: 20140803162211) do
 
   create_table "accessories", force: true do |t|
     t.string   "name"
@@ -70,12 +70,13 @@ ActiveRecord::Schema.define(version: 20140803144613) do
     t.integer  "order_id"
     t.integer  "amount"
     t.datetime "paid_at"
-    t.string   "type"
+    t.string   "payment_for"
     t.string   "card_no"
     t.string   "bank"
     t.string   "no"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "payment_method"
   end
 
   create_table "users", force: true do |t|
